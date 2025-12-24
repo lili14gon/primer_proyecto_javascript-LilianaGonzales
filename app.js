@@ -10,11 +10,16 @@ const asciiHeart = [
 ]
 
 const printByChart = (ms) => {
-    asciiHeart.forEach((element,index) => {
-        setTimeout(() => {
-           process.stdout.write(`${element}\n`);
-            
-        },ms*index);
+    let delay = 0;
+    asciiHeart.forEach((line) => {
+        line.split('').forEach((element, index) => {
+            setTimeout(() => {
+                process.stdout.write(`${element}`);
+                if ((line.length)-1==index) {
+                    process.stdout.write(`\n`)  
+                    }
+            },ms * delay++);
+        })
     });
 }
 
